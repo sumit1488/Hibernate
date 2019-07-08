@@ -18,15 +18,13 @@ public class HibernateUtil {
 			Configuration configuration = new Configuration();
 			configuration.addAnnotatedClass(User.class);
 			return configuration.buildSessionFactory(new StandardServiceRegistryBuilder().build());
-			
-		}
-		catch(Exception ex) {
+
+		} catch (Exception ex) {
 			ex.printStackTrace();
 			throw new RuntimeException("Error while building session factory");
 		}
 	}
-	
-	
+
 	public static SessionFactory getSessionFactory() {
 		return sessionFactory;
 	}
