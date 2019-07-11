@@ -5,7 +5,13 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.springframework.context.annotation.Bean;
 
+import com.hibernate.hibernate.entity.Account;
+import com.hibernate.hibernate.entity.Bank;
+import com.hibernate.hibernate.entity.Budget;
+import com.hibernate.hibernate.entity.Credentials;
+import com.hibernate.hibernate.entity.Transaction;
 import com.hibernate.hibernate.entity.User;
+import com.hibernate.hibernate.entity.Vehicle;
 
 @org.springframework.context.annotation.Configuration
 public class HibernateUtil {
@@ -17,6 +23,12 @@ public class HibernateUtil {
 		try {
 			Configuration configuration = new Configuration();
 			configuration.addAnnotatedClass(User.class);
+			configuration.addAnnotatedClass(Bank.class);
+			configuration.addAnnotatedClass(Credentials.class);
+			configuration.addAnnotatedClass(Account.class);
+			configuration.addAnnotatedClass(Transaction.class);
+			configuration.addAnnotatedClass(Vehicle.class);
+			configuration.addAnnotatedClass(Budget.class);
 			return configuration.buildSessionFactory(new StandardServiceRegistryBuilder().build());
 
 		} catch (Exception ex) {
