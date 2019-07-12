@@ -37,8 +37,7 @@ public class Account extends BaseEntity {
 	// private List<Transaction> transactions;
 
 	@ManyToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "ACCOUNT_USER", joinColumns = @JoinColumn(referencedColumnName = "ID"),
-			inverseJoinColumns = @JoinColumn(referencedColumnName = "ID"))
+	@JoinTable(name = "ACCOUNT_USER", joinColumns = @JoinColumn(referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(referencedColumnName = "ID"))
 	List<User> users = new ArrayList<>();
 
 	@Builder

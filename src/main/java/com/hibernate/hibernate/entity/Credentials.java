@@ -20,26 +20,25 @@ import lombok.NoArgsConstructor;
 @Data
 @EqualsAndHashCode(callSuper = true)
 @NoArgsConstructor
-public class Credentials extends BaseEntity{
+public class Credentials extends BaseEntity {
 
 	@Column(name = "USERNAME")
 	private String username;
-	
+
 	@Column(name = "PASSWORD")
 	private String password;
 
 	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "USER_ID" , referencedColumnName = "ID")
+	@JoinColumn(name = "USER_ID", referencedColumnName = "ID")
 	private User user;
-	
+
 	@Builder
-	public Credentials(String username, String password, Long id, String createdBy, LocalDate createdDate, String lastUpdatedBy, Instant lastUpdatedDate, User user) {
+	public Credentials(String username, String password, Long id, String createdBy, LocalDate createdDate,
+			String lastUpdatedBy, Instant lastUpdatedDate, User user) {
 		super(id, createdBy, createdDate, lastUpdatedBy, lastUpdatedDate, password);
 		this.username = username;
 		this.password = password;
 		this.user = user;
 	}
-	
-	
-	
+
 }

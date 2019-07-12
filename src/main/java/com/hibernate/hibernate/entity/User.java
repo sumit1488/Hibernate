@@ -23,7 +23,6 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
-
 import com.hibernate.hibernate.enums.LastNameEnum;
 
 import lombok.Builder;
@@ -57,10 +56,11 @@ public class User extends BaseEntity implements Serializable {
 	@Basic(optional = false)
 	@Column(name = "EMAIL_ADDRESS")
 	private String emailAddress;
-	
-	@OneToOne(mappedBy = "user") // name of refernce at Credentials.java side // never ise joincolumn on both sides and never use cascade on both sides
+
+	@OneToOne(mappedBy = "user") // name of refernce at Credentials.java side // never ise joincolumn on both
+									// sides and never use cascade on both sides
 	private Credentials credentials;
-	
+
 	@ElementCollection
 	@CollectionTable(name = "USER_ADDRESS", joinColumns = @JoinColumn(referencedColumnName = "ID"))
 	@AttributeOverrides({ @AttributeOverride(name = "addressLine1", column = @Column(name = "USER_ADDRESS_LINE_1")),
@@ -69,21 +69,22 @@ public class User extends BaseEntity implements Serializable {
 			@AttributeOverride(name = "state", column = @Column(name = "USER_STATE")),
 			@AttributeOverride(name = "zipCode", column = @Column(name = "USER_ZIPCODE")) })
 	private List<Address> address;
-	
+
 //	// for unidirectional
 //	@OneToMany
 //	@JoinColumn(name = "USER_ID", referencedColumnName = "ID", nullable = false)
 //	@Cascade(CascadeType.ALL)
 //	private List<Vehicle> vehicleList;
-	
+
 	// for bidirectional
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "user")
 	private List<Vehicle> vehicleList;
 
 	// for bidirectional
-	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "users") //mappedby contains the name of reference in Account entity
+	@ManyToMany(cascade = CascadeType.ALL, mappedBy = "users") // mappedby contains the name of reference in Account
+																// entity
 	List<Account> accountList = new ArrayList<Account>();
-	
+
 	@Builder
 	public User(Long id, String createdBy, LocalDate createdDate, String lastUpdatedBy, Instant lastUpdatedDate,
 			String password, String firstName, LastNameEnum lastName, LocalDate birthDate, String emailAddress,

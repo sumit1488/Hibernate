@@ -25,27 +25,25 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
-public class Budget extends BaseEntity{
+public class Budget extends BaseEntity {
 
 	@Column(name = "BUDGET_NAME")
 	private String name;
-	
+
 	@Column(name = "GOAL_AMOUNT")
 	private BigDecimal goalAmount;
-	
+
 	@OneToMany(cascade = CascadeType.ALL)
-	@JoinTable(name = "BUDGET_TRANSACTION", joinColumns = @JoinColumn(referencedColumnName = "ID"),
-			inverseJoinColumns = @JoinColumn(referencedColumnName = "ID"))
+	@JoinTable(name = "BUDGET_TRANSACTION", joinColumns = @JoinColumn(referencedColumnName = "ID"), inverseJoinColumns = @JoinColumn(referencedColumnName = "ID"))
 	private List<Transaction> transactions;
 
 	@Builder
-	public Budget(String name, BigDecimal goalAmount, List<Transaction> transactions,
-			Long id, String createdBy, LocalDate createdDate, String lastUpdatedBy, Instant lastUpdatedDate, String password) {
+	public Budget(String name, BigDecimal goalAmount, List<Transaction> transactions, Long id, String createdBy,
+			LocalDate createdDate, String lastUpdatedBy, Instant lastUpdatedDate, String password) {
 		super(id, createdBy, createdDate, lastUpdatedBy, lastUpdatedDate, password);
 		this.name = name;
 		this.goalAmount = goalAmount;
 		this.transactions = transactions;
 	}
-	
-	
+
 }

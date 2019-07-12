@@ -28,20 +28,18 @@ public class Transaction extends BaseEntity {
 
 	private BigDecimal initialBal;
 	private BigDecimal closingBal;
-	
-	
+
 	@ManyToOne
 	@JoinColumn(name = "ACCOUNT_ID", referencedColumnName = "ID", nullable = false)
 	@Cascade(CascadeType.ALL)
 	private Account account;
-	
+
 	@Builder
-	public Transaction(BigDecimal initialBal, BigDecimal closingBal,
-			Long id, String createdBy, LocalDate createdDate, String lastUpdatedBy, Instant lastUpdatedDate, String password) {
+	public Transaction(BigDecimal initialBal, BigDecimal closingBal, Long id, String createdBy, LocalDate createdDate,
+			String lastUpdatedBy, Instant lastUpdatedDate, String password) {
 		super(id, createdBy, createdDate, lastUpdatedBy, lastUpdatedDate, password);
 		this.initialBal = initialBal;
 		this.closingBal = closingBal;
 	}
 
-	
 }

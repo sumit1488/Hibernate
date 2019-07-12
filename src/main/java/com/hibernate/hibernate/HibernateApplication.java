@@ -87,7 +87,8 @@ public class HibernateApplication {
 		positionMap.put("TRAINEE", "SUMIT");
 		positionMap.put("PO", "AJAY");
 
-		// bank example for collection embedded for contacts and positionName and also address for object type embedding.
+		// bank example for collection embedded for contacts and positionName and also
+		// address for object type embedding.
 		Bank bank = Bank.builder().name("HDFC BANK").international(true).lastUpdatedBy("Sumit").lastUpdatedDate(null)
 				.createdBy("ETL").createdDate(LocalDate.now()).address(address)
 				.contacts(Arrays.asList("mail", "phone", "email")).positionNameMap(positionMap).build();
@@ -132,7 +133,6 @@ public class HibernateApplication {
 
 		session.save(budget);
 
-//		
 //		session.save(transaction2);
 //		session.save(transaction1);
 

@@ -27,7 +27,7 @@ public class BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_generator")
-	@SequenceGenerator(name="book_generator", sequenceName = "book_seq", initialValue = 21,  allocationSize=50)
+	@SequenceGenerator(name = "book_generator", sequenceName = "book_seq", initialValue = 21, allocationSize = 50)
 //	@GeneratedValue(strategy = GenerationType.TABLE, generator = "book_generator")
 //	@TableGenerator(name="book_generator", table="id_generator")
 	@Column(name = "ID")
@@ -37,17 +37,17 @@ public class BaseEntity {
 	private String createdBy;
 
 	@CreatedDate
-	@Column(name = "CREATED_DATE", columnDefinition="DATE")
-	//@Temporal(TemporalType.DATE) 
+	@Column(name = "CREATED_DATE", columnDefinition = "DATE")
+	// @Temporal(TemporalType.DATE)
 	private LocalDate createdDate;
 
 	@Column(name = "LAST_UPDATED_BY")
 	private String lastUpdatedBy;
 
 	@LastModifiedDate
-	@Column(name = "LAST_UPDATED_DATE", columnDefinition="DATE")
+	@Column(name = "LAST_UPDATED_DATE", columnDefinition = "DATE")
 	private Instant lastUpdatedDate;
-	
+
 	@Transient
 	private String password;
 
@@ -61,7 +61,5 @@ public class BaseEntity {
 //		this.lastUpdatedDate = lastUpdatedDate;
 //		this.password = password;
 //	}
-	
-	
 
 }
