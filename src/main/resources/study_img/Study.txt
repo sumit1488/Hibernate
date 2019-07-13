@@ -1,0 +1,13 @@
+Prefer EntityManagerFactory and EntityManager. They are defined by the JPA standard.
+
+SessionFactory and Session are hibernate-specific. The EntityManager invokes the hibernate session under the hood. And if you need some specific features that are not available in the EntityManager, you can obtain the session by calling:
+
+Session session = entityManager.unwrap(Session.class);
+
+Using EntityManagerFactory approach allows us to use callback method annotations like @PrePersist, @PostPersist,@PreUpdate with no extra configuration.
+
+Using similar callbacks while using SessionFactory will require extra efforts.
+
+
+SPringDataJpa uses entityManager
+https://dzone.com/articles/accessing-the-entitymanager-from-spring-data-jpa
